@@ -15,7 +15,7 @@ export interface PostData {
 
 export function getSortedPostsData(): PostData[] {
     // Get file names under /posts
-    const fileNames = fs.readdirSync(postsDirectory);
+    const fileNames = fs.readdirSync(postsDirectory).filter(file => file !== "[id].tsx");
     const allPostsData = fileNames.map((fileName) => {
         // Remove ".md" from file name to get id
         const id = fileName.replace(/\.md$/, '');
